@@ -1,1 +1,1 @@
-# testing-practise
+# Testing practices from The Odin Project.
