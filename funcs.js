@@ -1,13 +1,19 @@
 function capitalise(str) {
+  if (typeof str !== "string" || !str) {
+    throw new Error("Input must be a non-empty string");
+  }
   const chars = str.split("");
   chars[0] = chars[0].toUpperCase();
   return chars.join("");
 }
 
 function reverseString(str) {
-    const chars = str.split("");
-    const reversedString = chars.toReversed().join("");
-    return reversedString;
+  if (typeof str !== "string" || !str) {
+    throw new Error("Input must be a non-empty string");
+  }
+  const chars = str.split("");
+  const reversedString = chars.toReversed().join("");
+  return reversedString;
 }
 
 const calc = {
