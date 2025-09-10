@@ -1,4 +1,4 @@
-import { capitalise, reverseString, calc } from "./funcs.js";
+import { capitalise, reverseString, calc, caesarCipher } from "./funcs.js";
 
 test("capitalise word: cat to CAT", () => {
   expect(capitalise("cat")).toBe("Cat");
@@ -39,3 +39,15 @@ test("divide 4 / 2 to equal 1", () => {
 test("divide 5 * 5 to equal 25", () => {
   expect(calc.multiply(5, 5)).toBe(25);
 });
+
+test("Ceaser cipher xyz should return abc", () => {
+    expect(caesarCipher('xyz', 3)).toBe("abc")
+})
+
+test("Ceaser cipher heLLo should return abc", () => {
+    expect(caesarCipher('HeLLo', 3)).toBe("KhOOr")
+})
+
+test("Ceaser cipher heLLo should return abc", () => {
+    expect(caesarCipher('Hello, World!', 3)).toBe("Khoor, Zruog!")
+})

@@ -23,4 +23,20 @@ const calc = {
   divide: (no1, no2) => (no2 !== 0 ? no1 / no2 : undefined),
 };
 
-export { capitalise, reverseString, calc };
+function caesarCipher(str, key) {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const shift = ((key % 26) + 26) % 26;
+    return str
+        .split("")
+        .map((char) => {
+            const lowerChar = char.toLowerCase();
+            const idx = alphabet.indexOf(lowerChar);
+            if (idx === -1) return char;
+            const cipherIdx = (idx + shift) % 26;
+            const cipherChar = alphabet[cipherIdx];
+            return char === char.toUpperCase() ? cipherChar.toUpperCase() : cipherChar;
+        })
+        .join("");
+}
+
+export { capitalise, reverseString, calc, caesarCipher };
