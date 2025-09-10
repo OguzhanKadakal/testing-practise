@@ -6,9 +6,15 @@ function capitalise(str) {
 
 function reverseString(str) {
     const chars = str.split("");
-    const reversedString = chars.toReverse().join("");
+    const reversedString = chars.toReversed().join("");
     return reversedString;
 }
 
+const calc = {
+  add: (no1, no2) => no1 + no2,
+  substract: (no1, no2) => no1 - no2,
+  multiply: (no1, no2) => no1 * no2,
+  divide: (no1, no2) => (no2 !== 0 ? no1 / no2 : undefined),
+};
 
-export { capitalise, reverseString };
+export { capitalise, reverseString, calc };
