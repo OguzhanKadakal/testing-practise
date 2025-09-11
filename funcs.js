@@ -24,19 +24,34 @@ const calc = {
 };
 
 function caesarCipher(str, key) {
-    const alphabet = "abcdefghijklmnopqrstuvwxyz";
-    const shift = ((key % 26) + 26) % 26;
-    return str
-        .split("")
-        .map((char) => {
-            const lowerChar = char.toLowerCase();
-            const idx = alphabet.indexOf(lowerChar);
-            if (idx === -1) return char;
-            const cipherIdx = (idx + shift) % 26;
-            const cipherChar = alphabet[cipherIdx];
-            return char === char.toUpperCase() ? cipherChar.toUpperCase() : cipherChar;
-        })
-        .join("");
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const shift = ((key % 26) + 26) % 26;
+  return str
+    .split("")
+    .map((char) => {
+      const lowerChar = char.toLowerCase();
+      const idx = alphabet.indexOf(lowerChar);
+      if (idx === -1) return char;
+      const cipherIdx = (idx + shift) % 26;
+      const cipherChar = alphabet[cipherIdx];
+      return char === char.toUpperCase()
+        ? cipherChar.toUpperCase()
+        : cipherChar;
+    })
+    .join("");
 }
 
-export { capitalise, reverseString, calc, caesarCipher };
+function analyseArray(arr) {
+  if (!Array.isArray(arr)) {
+    throw new Error("Input must be an array of numbers");
+  } else if (arr.some((num) => typeof num !== "number"))
+    throw new Error("Input must be an array of numbers");
+  return {
+    average: arr.reduce((acc, num) => acc + num, 0) / arr.length,
+    min: arr.reduce((acc, num) => (num < acc ? num : acc), Infinity),
+    max: arr.reduce((acc, num) => (num > acc ? num : acc), -Infinity),
+    length: arr.length,
+  }
+}
+
+export { capitalise, reverseString, calc, caesarCipher, analyseArray };

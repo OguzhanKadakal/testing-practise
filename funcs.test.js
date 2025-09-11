@@ -1,4 +1,4 @@
-import { capitalise, reverseString, calc, caesarCipher } from "./funcs.js";
+import { capitalise, reverseString, calc, caesarCipher, analyseArray } from "./funcs.js";
 
 test("capitalise word: cat to CAT", () => {
   expect(capitalise("cat")).toBe("Cat");
@@ -51,3 +51,15 @@ test("Ceaser cipher heLLo should return abc", () => {
 test("Ceaser cipher heLLo should return abc", () => {
     expect(caesarCipher('Hello, World!', 3)).toBe("Khoor, Zruog!")
 })
+
+describe("Analyse a number array and return an object with number properties", () => {
+    it("returns an object with average, min, max, length with correct values", () => {
+        expect(analyseArray([1, 8, 3, 4, 2, 6])).toEqual({average: 4, min: 1, max: 8, length: 6});
+    });
+    it("Throws error when its not an array", () => {
+      expect(() => analyseArray({} || "")).toThrow("Input must be an array of numbers");
+    });
+    it("Throws error when array contains non-number elements", () => {
+      expect(() => analyseArray([1, "a", 3])).toThrow("Input must be an array of numbers");
+    });
+});
